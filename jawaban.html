@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Marry Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 100px;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            animation-duration: 1.5s;
+        }
+
+        h1 {
+            color: #ff5733;
+            font-size: 2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .balloon-animation,
+        .broken-heart-animation,.wow-animation {
+            font-size: 100px;
+            opacity: 0;
+            position: absolute;
+            animation-fill-mode: forwards;
+        }
+
+        .balloon-animation {
+            animation: balloon 2s ease forwards;
+        }
+
+        .broken-heart-animation {
+            animation: heartbeat 1.5s ease forwards;
+        }
+        
+        .wow-animation {
+            animation: wow 1.5s ease forwards;
+        }
+
+        @keyframes balloon {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+         @keyframes wow {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+	    <audio controls autoplay>
+      <source src="./Westlife - Beautiful In White.mp3" type="audio/mpeg">
+      Maaf, browser Anda tidak mendukung elemen audio.
+  </audio>
+        <h1>Will You Marry Me?</h1>
+        <p>Meskipun perkenalan kita singkat dan hanya sebatas teman magang, 
+        kamu tetap menjadi teman yang spesial bagiku. 
+        Setiap kali aku merasa lelah, cukup dengan berkomunikasi denganmu, 
+        semuanya terasa lebih baik.</p>
+        </p>
+         <p>Kita mungkin tidak bisa menghabiskan waktu bersama di karenakan jarak, tapi setiap cerita, setiap tawa, dan setiap mimpi kita berbagi melalui pesan text membuatku merasa dekat padamu. Meskipun LDR ini sulit, tapi aku bersyukur karena memilikimu di dalam hidupku.</p>
+        </p>
+        <p>Kamu adalah pelipur lara ketika aku merasa kesepian dan teman sejati yang selalu mendukungku. Kita melalui ini bersama, dan aku tahu, cinta kita akan terus memperkuat hubungan kita, meskipun berjarak.</p>
+        <p></p>Will you make me the happiest person in the world, by marrying me?</p>
+        <button id="yesButton">Yes, I will!</button>
+        <button id="noButton">No, I won't</button>
+        <div class="broken-heart-animation">💔</div>
+         <div class="balloon-animation">🎈</div>
+          <div class="wow-animation">😮</div>
+    </div>
+
+    <!-- Include anime.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+
+    <script>
+        document.getElementById("yesButton").addEventListener("click", function () {
+            var balloon = document.querySelector(".balloon-animation");
+            balloon.style.top = "50%";
+            balloon.style.left = "50%";
+            balloon.style.opacity = "1";
+            
+             var brokenHeart = document.querySelector(".wow-animation");
+            brokenHeart.style.top = "120%";
+            brokenHeart.style.left = "20%";
+            brokenHeart.style.opacity = "1";
+
+            // Menonaktifkan tombol setelah diklik agar animasi tidak muncul lagi
+            document.getElementById("yesButton").disabled = true;
+            document.getElementById("noButton").disabled = true;
+
+            // Wow animation effect using anime.js
+            anime({
+                targets: '.balloon-animation',
+                translateY: [
+                    { value: -100, duration: 500, easing: 'easeInOutQuad' },
+                    { value: 0, duration: 500, easing: 'easeInOutQuad' }
+                ],
+                opacity: 0,
+                delay: 1000, // Delay the animation for 1 second
+            });
+        });
+
+        document.getElementById("noButton").addEventListener("click", function () {
+            var balloon = document.querySelector(".balloon-animation");
+            balloon.style.opacity = "0"; // Sembunyikan balon jika tombol "No, I won't" diklik
+            var brokenHeart = document.querySelector(".broken-heart-animation");
+            brokenHeart.style.top = "120%";
+            brokenHeart.style.left = "50%";
+            brokenHeart.style.opacity = "1";
+
+            // Menonaktifkan tombol setelah diklik agar animasi tidak muncul lagi
+            document.getElementById("yesButton").disabled = true;
+            document.getElementById("noButton").disabled = true;
+        });
+    </script>
+</body>
+
+</html>
