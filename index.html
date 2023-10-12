@@ -97,7 +97,7 @@
 </head>
 
 <body>
- <audio controls autoplay>
+ <audio id="audioPlayer" controls autoplay>
       <source src="./Westlife - Beautiful In White.mp3" type="audio/mpeg">
       Maaf, browser Anda tidak mendukung elemen audio.
   </audio>
@@ -123,6 +123,22 @@
     <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Kode JavaScript Anda yang ingin dieksekusi setelah dokumen dimuat
+            var audioPlayer = document.getElementById("audioPlayer");
+
+            // Tambahkan event listener 'canplaythrough' untuk memastikan audio sudah dimuat sebelum diputar
+            audioPlayer.addEventListener("canplaythrough", function() {
+                // Memulai pemutaran audio secara otomatis setelah audio sudah dimuat
+                audioPlayer.play();
+            });
+
+            // Jika audio player sudah dimuat sebelumnya (cache), mulai pemutaran audio
+            if (audioPlayer.readyState > 0) {
+                audioPlayer.play();
+            }
+        });
+        
         document.getElementById("yesButton").addEventListener("click", function () {
             var balloon = document.querySelector(".balloon-animation");
             balloon.style.top = "50%";
